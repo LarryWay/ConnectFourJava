@@ -11,6 +11,7 @@ Win Algorithm: Scan from top to bottom, left to right, checking for
 
 
 Structure of program:
+
     - Column class: hold an int to represent which column it represents, takes care of gravity mechanism
     
     - Piece class: Holds cords relative to the board, and the char tile to represent players
@@ -25,6 +26,7 @@ Structure of program:
 
 
 Modularity
+
     - CONSTANTS.HORIZONTAL_SPACES can be changed to set the width of the board
     - CONSTANTS.HORIZONTAL_SPACES can be changed to set the height of each column
     - CONSTANTS.IN_A_ROW can be changed such that the win condition changes from 4 to any number
