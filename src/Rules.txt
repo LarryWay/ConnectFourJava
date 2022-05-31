@@ -24,3 +24,10 @@ Modularity
     - CONSTANTS.IN_A_ROW can be changed such that the win condition changes from 4 to any number
     - CONSTANTS.PLAYER_ONE can change player one's tile
     - CONSTANTS.PLAYER_TWO can change player two's tile
+
+
+Known issue: Changing the CONSTANTS.VERTICAL_SPACES or CONSTANTS.HORIZONTAL_SPACES may not
+             immediately update. I'm honestly not sure why, but it has nothing to do with
+             the code itself, and more with the compilation process. In other words, the
+             out_of_range error may occur when adjusting one of the following constants to
+             a value higher than the default. 

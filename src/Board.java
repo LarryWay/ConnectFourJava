@@ -9,6 +9,8 @@ public class Board {
     public Board(){
         System.out.println(grid[0].length);
         System.out.println(CONSTANTS.HORIZONTAL_SPACES);
+        System.out.println(CONSTANTS.HORIZONTAL_SPACES);
+        System.out.println(CONSTANTS.VERTICAL_SPACES);
     }
 
     public boolean checkWin(char tile){
