@@ -1,0 +1,19 @@
+Board size: 8x8
+
+Computer Procedure: Place a piece in every row, and scan right, bottom, and down-right
+                    for the highest number of in-a-row pieces
+
+
+Win Algorithm: Scan from top to bottom, left to right, checking for
+                four in a rows to the right, downwards, and down-right
+
+
+Structure of program:
+    - Column class: hold an int to represent which column it represents, takes care of gravity mechanism
+    - Piece class: Holds cords relative to the board, and the char tile to represent the player or computer
+    - UI Class: Manage prints to the console and player input
+    - Computer Class: AI that the player goes against
+    - Board Class: Class that holds the 2D array of Pieces, object shared with UI, Computer, and Column Classes
+        - Will hold algorithm to check win
+    - Constants Class: Holds Constants
+    - main Class: Driver class
