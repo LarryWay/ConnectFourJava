@@ -1,36 +1,14 @@
 public class UI {
 
     Board board = new Board();
-    Computer computer = new Computer(board);
     Column[] columns = new Column[CONSTANTS.HORIZONTAL_SPACES];
+    private int playerTurn = 2;
 
     public UI(){
         setColumns();
     }
 
-    private void setColumns(){
-        for(int x = 0 ; x < CONSTANTS.HORIZONTAL_SPACES ; x++){
-            columns[x] = new Column(board.getGrid(), x);
-        }
-    }
-
-
-    // Player Input Section
-    public void addPiece(int x){
-        if(columns[x].hasEmptySpot()){
-            columns[x].addPiece();
-        }else{
-            System.out.println("Not available spot");
-        }
-
-        if(board.checkWin(columns[x].getPiece().getPlayerTile())){
-            System.out.println("POOGERS");
-        }
-
-
-    }
-
-
+    //Print board to terminal
     public void displayBoard(){
         for(int y = 0 ; y < CONSTANTS.VERTICAL_SPACES ; y++){
             System.out.print("| ");
@@ -45,10 +23,9 @@ public class UI {
             System.out.println();
         }
 
-        for(int x = 6 ; x < CONSTANTS.HORIZONTAL_SPACES + 6 ; x++){
-            for(int y = 0 ; y < CONSTANTS.PRINT_DIVIDE[x % 3] ; y++){
-                System.out.print("-");
-            }
+        System.out.print("-");
+        for(int x = 0 ; x < CONSTANTS.HORIZONTAL_SPACES ; x++){
+            System.out.print("----");
         }
         System.out.println();
 
@@ -60,5 +37,34 @@ public class UI {
         System.out.println();
     }
 
+
+    // Player Input Section
+    public void addPiece(int x){
+        if(x < CONSTANTS.HORIZONTAL_SPACES) {
+            if (columns[x].hasEmptySpot()) {
+                columns[x].addPiece(getTile());
+                playerTurn++;
+            } else {
+                System.out.println("No available spot");
+            }
+        }else
+            System.out.println("Out of bounds");
+    }
+
+
+    private void setColumns(){
+        for(int x = 0 ; x < CONSTANTS.HORIZONTAL_SPACES ; x++){
+            columns[x] = new Column(board.getGrid(), x);
+        }
+    }
+
+    public boolean checkWin(){
+        return board.checkWin(getTile());
+
+    }
+
+    public char getTile(){
+        return (playerTurn % 2 == 0) ? CONSTANTS.PLAYER_ONE : CONSTANTS.PLAYER_TWO;
+    }
 
 }

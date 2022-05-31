@@ -10,10 +10,17 @@ Win Algorithm: Scan from top to bottom, left to right, checking for
 
 Structure of program:
     - Column class: hold an int to represent which column it represents, takes care of gravity mechanism
-    - Piece class: Holds cords relative to the board, and the char tile to represent the player or computer
+    - Piece class: Holds cords relative to the board, and the char tile to represent players
     - UI Class: Manage prints to the console and player input
-    - Computer Class: AI that the player goes against
     - Board Class: Class that holds the 2D array of Pieces, object shared with UI, Computer, and Column Classes
         - Will hold algorithm to check win
     - Constants Class: Holds Constants
     - main Class: Driver class
+
+
+Modularity
+    - CONSTANTS.HORIZONTAL_SPACES can be changed to set the width of the board
+    - CONSTANTS.HORIZONTAL_SPACES can be changed to set the height of each column
+    - CONSTANTS.IN_A_ROW can be changed such that the win condition changes from 4 to any number
+    - CONSTANTS.PLAYER_ONE can change player one's tile
+    - CONSTANTS.PLAYER_TWO can change player two's tile

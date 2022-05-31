@@ -5,11 +5,11 @@ public class Board {
     private Piece[][] grid = new Piece[CONSTANTS.VERTICAL_SPACES][CONSTANTS.HORIZONTAL_SPACES];
     Match match = new Match(CONSTANTS.IN_A_ROW, grid);
 
+
     public Board(){
         System.out.println(grid[0].length);
         System.out.println(CONSTANTS.HORIZONTAL_SPACES);
     }
-
 
     public boolean checkWin(char tile){
         match.swapTile(tile);
@@ -18,20 +18,16 @@ public class Board {
                 if(grid[y][x] != null){
                     match.assignPos(x, y);
                     if(y <= CONSTANTS.VERTICAL_SPACES - CONSTANTS.IN_A_ROW){
-                        //System.out.print("Vertical Search: ");
-                        System.out.println(match.checkAlgorithm(0, -1));
+                        if(match.checkAlgorithm(0, -1)) return true;
                     }
                     if(x <= CONSTANTS.HORIZONTAL_SPACES - CONSTANTS.IN_A_ROW){
-                        //System.out.print("Horizontal Search: ");
-                        System.out.println(match.checkAlgorithm(1, 0));
+                        if(match.checkAlgorithm(1, 0)) return true;
                     }
                     if(x <= CONSTANTS.HORIZONTAL_SPACES - CONSTANTS.IN_A_ROW && y <= CONSTANTS.IN_A_ROW){
-                        //System.out.print("Down-Right Search: ");
-                        System.out.println(match.checkAlgorithm(1, -1));
+                        if(match.checkAlgorithm(1, -1)) return true;
                     }
                     if(x >= CONSTANTS.IN_A_ROW - 1 && y <= CONSTANTS.IN_A_ROW){
-                        //System.out.print("Down-Left Search: ");
-                        System.out.println(match.checkAlgorithm(-1, -1));
+                        if(match.checkAlgorithm(-1, -1)) return true;
                     }
                 }
             }
@@ -48,6 +44,8 @@ public class Board {
 
 }
 
+
+
 class Match{
     int numOfRequiredMatches;
     Piece[][] grid;
@@ -55,18 +53,16 @@ class Match{
     int yPos;
     char mutableTile;
 
+
     public Match(int numOfVals, Piece[][] g){
         numOfRequiredMatches = numOfVals;
         grid = g;
     }
 
-
-
     public void assignPos(int x, int y){
         xPos = x;
         yPos = y;
     }
-
 
     public boolean checkAlgorithm(int xMod, int yMod){
         int matches = 1;
@@ -85,7 +81,6 @@ class Match{
         }
         return matches >= CONSTANTS.IN_A_ROW;
     }
-
 
     public void swapTile(char tile){
         mutableTile = tile;
