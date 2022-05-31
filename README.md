@@ -12,11 +12,15 @@ Win Algorithm: Scan from top to bottom, left to right, checking for
 
 Structure of program:
     - Column class: hold an int to represent which column it represents, takes care of gravity mechanism
+    
     - Piece class: Holds cords relative to the board, and the char tile to represent players
+    
     - UI Class: Manage prints to the console and player input
+    
     - Board Class: Class that holds the 2D array of Pieces, object shared with UI, Computer, and Column Classes
-        - Will hold algorithm to check win
+
     - Constants Class: Holds Constants
+    
     - main Class: Driver class
 
 
